@@ -7,38 +7,66 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon
 import sys
 
+"""Окно входа и регистрации"""
 class Window(QWidget):
     def __init__(self):
         super().__init__()
+        """Создание макета"""
+        layout = QGridLayout()
+        layout.setContentsMargins(20, 20, 20, 20)
+        layout.setSpacing(10)
         self.setWindowIcon(QIcon("apple.jpg"))
         self.setWindowTitle("Your task tree")
-        self.setContentsMargins(20, 20, 20, 20)
-
-        layout = QGridLayout()
         self.setLayout(layout)
 
-        self.label1 = QLabel("Username: ")
-        layout.addWidget(self.label1, 0, 0)
+        """Создание основных виджетов"""
+        title = QLabel("Login Form")
+        layout.addWidget(title, 0, 0, 1, 3, Qt.AlignmentFlag.AlignCenter)
 
-        self.label2 = QLabel("Password: ")
-        layout.addWidget(self.label2, 1, 0)
+        user = QLabel("Username: ")
+        layout.addWidget(user, 1, 0)
 
+        pwd = QLabel("Password")
+        layout.addWidget(pwd, 2, 0)
+
+        """Поля ввода"""
         self.input1 = QLineEdit()
-        layout.addWidget(self.input1, 0, 1)
+        layout.addWidget(self.input1, 1, 1, 1, 2)
 
         self.input2 = QLineEdit()
-        layout.addWidget(self.input2, 1, 1)
+        self.input2.setEchoMode(QLineEdit.EchoMode.Password)
+        layout.addWidget(self.input2, 2, 1, 1, 2)
 
-        button = QPushButton("Submit")
-        button.setFixedWidth(50)
-        button.clicked.connect(self.display)
-        layout.addWidget(button, 2, 1, Qt.AlignmentFlag.AlignRight)
+        button1 = QPushButton("Register")
+        layout.addWidget(button1, 3, 1)
 
-    def display(self):
-        print(self.input1.text())
-        print(self.input2.text())
+        button2 = QPushButton("Login")
+        layout.addWidget(button2, 3, 2)
+
 
 app = QApplication(sys.argv)
+
+"""Применение ко всему приложению
+    window.setStyleSheet() - к одному окну"""
+
+app.setStyleSheet("""
+    QWidget  {
+        background-color: "pink";
+        colour: "brown";
+    }
+    
+    QLineEdit {
+        background-color: "white";
+    }
+    
+    QPushButton {
+        font-size: 16px;
+    }
+    
+""")
+
 window = Window()
 window.show()
 sys.exit(app.exec())
+
+
