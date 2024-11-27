@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e79eefc7-6da6-40d1-9457-1f846dbc4108" name="Changes" comment="first option">
+    <list default="true" id="e79eefc7-6da6-40d1-9457-1f846dbc4108" name="Changes" comment="first window">
+      <change afterPath="$PROJECT_DIR$/LoginWindow.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/style.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/variant.py" beforeDir="false" afterPath="$PROJECT_DIR$/variant.py" afterDir="false" />
@@ -24,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="e01ddc8e2132b12895f44a90168527ff7ebc171a" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,10 +43,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.main.executor": "Run",
+    "Python.styles.executor": "Run",
     "Python.w.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "e01ddc8e",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/eldor/PycharmProjects/lab_2-master"
   }
 }]]></component>
@@ -77,7 +80,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732471222127</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="first window">
+      <option name="closed" value="true" />
+      <created>1732726900280</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1732726900280</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -93,6 +104,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first option" />
-    <option name="LAST_COMMIT_MESSAGE" value="first option" />
+    <MESSAGE value="first window" />
+    <option name="LAST_COMMIT_MESSAGE" value="first window" />
   </component>
 </project>
