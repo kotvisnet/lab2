@@ -15,7 +15,6 @@
 #         """
 
 # Стиль приложения
-# Стиль приложения
 style = """
 QWidget {
     background-color: #f0f4f8;
