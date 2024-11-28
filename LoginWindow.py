@@ -1,4 +1,5 @@
 from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox
 from PlannerWindow import TaskPlannerWindow
 from UserData import load_user_data
@@ -8,6 +9,7 @@ from style import style
 class LoginWindow(QWidget):
     def __init__(self):
         super().__init__()
+        self.setWindowIcon(QIcon("apple.jpg"))
         self.task_planner = None
         self.setWindowTitle("Вход")
         self.setGeometry(400, 400, 300, 200)

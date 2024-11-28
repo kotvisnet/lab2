@@ -1,4 +1,5 @@
 from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox
 from UserData import load_user_data, save_user_data
 from style import style
@@ -7,6 +8,7 @@ from style import style
 class RegistrationWindow(QWidget):
     def __init__(self):
         super().__init__()
+        self.setWindowIcon(QIcon("apple.jpg"))
         self.setWindowTitle("Регистрация")
         self.setGeometry(400, 400, 300, 200)
         self.setStyleSheet(style)

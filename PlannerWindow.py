@@ -1,4 +1,5 @@
 from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QLabel, QListWidget, QPushButton, QInputDialog, QMessageBox
 from style import style
 
@@ -7,7 +8,8 @@ from style import style
 class TaskPlannerWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Планировщик задач")
+        self.setWindowIcon(QIcon("apple.jpg"))
+        self.setWindowTitle("Welcome to the Task Tree")
         self.setGeometry(300, 300, 400, 300)
         self.setStyleSheet(style)
 
