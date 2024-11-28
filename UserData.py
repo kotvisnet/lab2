@@ -1,6 +1,6 @@
 import json
 USER_DATA_FILE = "users.json"
-# Функции для работы с JSON
+"""Функции для работы с JSON"""
 def load_user_data():
     """Загружает данные пользователей из JSON-файла."""
     try:

@@ -4,8 +4,8 @@ from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton
 from UserData import load_user_data, save_user_data
 from style import style
 
-# Окно регистрации
 class RegistrationWindow(QWidget):
+    """Класс для создания окна регистрации"""
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon("apple.jpg"))
@@ -34,6 +34,7 @@ class RegistrationWindow(QWidget):
         layout.addWidget(register_button)
 
     def register_user(self):
+        """Функция регистрации пользователя"""
         username = self.username.text()
         password = self.password.text()
 

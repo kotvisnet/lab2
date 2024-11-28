@@ -7,6 +7,7 @@ from style import style
 
 # Окно входа
 class LoginWindow(QWidget):
+    """Класс для создания окна входа"""
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon("apple.jpg"))
@@ -48,7 +49,7 @@ class LoginWindow(QWidget):
             QMessageBox.warning(self, "Ошибка", "Неверное имя пользователя или пароль.")
 
     def open_task_planner(self):
-        """Открывает приложение планировщика задач."""
+        """Открывает приложение планировщика задач"""
         self.task_planner = TaskPlannerWindow()
         self.task_planner.show()
         self.close()

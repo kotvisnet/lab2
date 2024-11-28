@@ -3,9 +3,8 @@ from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QLabel, QListWidget, QPushButton, QInputDialog, QMessageBox
 from style import style
 
-
-# Окно планировщика задач
 class TaskPlannerWindow(QMainWindow):
+    """Окно планировщика задач"""
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon("apple.jpg"))
@@ -34,11 +33,13 @@ class TaskPlannerWindow(QMainWindow):
         layout.addWidget(remove_task_button)
 
     def add_task(self):
+        """Добавление задачи в список"""
         task, ok = QInputDialog.getText(self, "Новая задача", "Введите текст задачи:")
         if ok and task:
             self.task_list.addItem(task)
 
     def remove_task(self):
+        """Удаление задачи из списка"""
         selected_item = self.task_list.currentItem()
         if selected_item:
             self.task_list.takeItem(self.task_list.row(selected_item))
