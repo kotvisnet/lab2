@@ -1,4 +1,5 @@
 import sys
+import json
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QMainWindow, QVBoxLayout, QGridLayout,
     QLabel, QLineEdit, QPushButton, QListWidget, QMessageBox, QInputDialog
@@ -6,9 +7,8 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtGui import QIcon
 from PyQt6.QtCore import Qt
 import style
+from UserData import UserData
 
-# Хранилище пользователей (в памяти, для демонстрации)
-user_data = {}
 
 
 
@@ -48,14 +48,61 @@ class RegistrationWindow(QWidget):
             QMessageBox.warning(self, "Ошибка", "Поля логина и пароля не должны быть пустыми.")
             return
 
+        user_data = load_user_data()
+
         if username in user_data:
             QMessageBox.warning(self, "Ошибка", "Этот пользователь уже существует.")
         else:
             user_data[username] = password
+            save_user_data(user_data)
             QMessageBox.information(self, "Успех", "Регистрация завершена!")
             self.close()
 
+# Окно входа
+class LoginWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Вход")
+        self.setGeometry(400, 400, 300, 200)
+        self.setStyleSheet(style)
 
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+
+        title = QLabel("Вход")
+        title.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        layout.addWidget(title)
+
+        self.username = QLineEdit()
+        self.username.setPlaceholderText("Имя пользователя")
+        layout.addWidget(self.username)
+
+        self.password = QLineEdit()
+        self.password.setPlaceholderText("Пароль")
+        self.password.setEchoMode(QLineEdit.EchoMode.Password)
+        layout.addWidget(self.password)
+
+        login_button = QPushButton("Войти")
+        login_button.clicked.connect(self.login_user)
+        layout.addWidget(login_button)
+
+    def login_user(self):
+        username = self.username.text()
+        password = self.password.text()
+
+        user_data = load_user_data()
+
+        if user_data.get(username) == password:
+            QMessageBox.information(self, "Успех", "Добро пожаловать!")
+            self.open_task_planner()
+        else:
+            QMessageBox.warning(self, "Ошибка", "Неверное имя пользователя или пароль.")
+
+    def open_task_planner(self):
+        """Открывает приложение планировщика задач."""
+        self.task_planner = TaskPlannerWindow()
+        self.task_planner.show()
+        self.close()
 
 # Окно планировщика задач
 class TaskPlannerWindow(QMainWindow):
@@ -129,11 +176,150 @@ class MainWindow(QWidget):
         self.login_window.show()
 
 # Запуск приложения
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    main_window = MainWindow()
-    main_window.show()
-    sys.exit(app.exec())
+data = UserData
+app = QApplication(sys.argv)
+main_window = MainWindow()
+main_window.show()
+sys.exit(app.exec())
+
+
+
+# import sys
+# from PyQt6.QtWidgets import (
+#     QApplication, QWidget, QMainWindow, QVBoxLayout, QGridLayout,
+#     QLabel, QLineEdit, QPushButton, QListWidget, QMessageBox, QInputDialog
+# )
+# from PyQt6.QtGui import QIcon
+# from PyQt6.QtCore import Qt
+# import style
+#
+# # Хранилище пользователей (в памяти, для демонстрации)
+# user_data = {}
+#
+#
+#
+# # Окно регистрации
+# class RegistrationWindow(QWidget):
+#     def __init__(self):
+#         super().__init__()
+#         self.setWindowTitle("Регистрация")
+#         self.setGeometry(400, 400, 300, 200)
+#         self.setStyleSheet(style)
+#
+#         layout = QVBoxLayout()
+#         self.setLayout(layout)
+#
+#         title = QLabel("Регистрация")
+#         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
+#         layout.addWidget(title)
+#
+#         self.username = QLineEdit()
+#         self.username.setPlaceholderText("Имя пользователя")
+#         layout.addWidget(self.username)
+#
+#         self.password = QLineEdit()
+#         self.password.setPlaceholderText("Пароль")
+#         self.password.setEchoMode(QLineEdit.EchoMode.Password)
+#         layout.addWidget(self.password)
+#
+#         register_button = QPushButton("Зарегистрироваться")
+#         register_button.clicked.connect(self.register_user)
+#         layout.addWidget(register_button)
+#
+#     def register_user(self):
+#         username = self.username.text()
+#         password = self.password.text()
+#
+#         if not username or not password:
+#             QMessageBox.warning(self, "Ошибка", "Поля логина и пароля не должны быть пустыми.")
+#             return
+#
+#         if username in user_data:
+#             QMessageBox.warning(self, "Ошибка", "Этот пользователь уже существует.")
+#         else:
+#             user_data[username] = password
+#             QMessageBox.information(self, "Успех", "Регистрация завершена!")
+#             self.close()
+#
+#
+#
+# # Окно планировщика задач
+# class TaskPlannerWindow(QMainWindow):
+#     def __init__(self):
+#         super().__init__()
+#         self.setWindowTitle("Планировщик задач")
+#         self.setGeometry(300, 300, 400, 300)
+#         self.setStyleSheet(style)
+#
+#         central_widget = QWidget(self)
+#         self.setCentralWidget(central_widget)
+#
+#         layout = QVBoxLayout(central_widget)
+#
+#         title = QLabel("Ваши задачи")
+#         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
+#         layout.addWidget(title)
+#
+#         self.task_list = QListWidget()
+#         layout.addWidget(self.task_list)
+#
+#         add_task_button = QPushButton("Добавить задачу")
+#         add_task_button.clicked.connect(self.add_task)
+#         layout.addWidget(add_task_button)
+#
+#         remove_task_button = QPushButton("Удалить выбранную задачу")
+#         remove_task_button.clicked.connect(self.remove_task)
+#         layout.addWidget(remove_task_button)
+#
+#     def add_task(self):
+#         task, ok = QInputDialog.getText(self, "Новая задача", "Введите текст задачи:")
+#         if ok and task:
+#             self.task_list.addItem(task)
+#
+#     def remove_task(self):
+#         selected_item = self.task_list.currentItem()
+#         if selected_item:
+#             self.task_list.takeItem(self.task_list.row(selected_item))
+#         else:
+#             QMessageBox.warning(self, "Ошибка", "Выберите задачу для удаления.")
+#
+# # Основное окно
+# class MainWindow(QWidget):
+#     def __init__(self):
+#         super().__init__()
+#         self.setWindowTitle("Your Task Tree")
+#         self.setGeometry(300, 300, 400, 200)
+#         self.setStyleSheet(style)
+#
+#         layout = QGridLayout()
+#         self.setLayout(layout)
+#
+#         title = QLabel("Форма входа")
+#         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
+#         layout.addWidget(title, 0, 0, 1, 3)
+#
+#         register_button = QPushButton("Регистрация")
+#         register_button.clicked.connect(self.open_registration)
+#         layout.addWidget(register_button, 1, 1)
+#
+#         login_button = QPushButton("Вход")
+#         login_button.clicked.connect(self.open_login)
+#         layout.addWidget(login_button, 1, 2)
+#
+#     def open_registration(self):
+#         self.reg_window = RegistrationWindow()
+#         self.reg_window.show()
+#
+#     def open_login(self):
+#         self.login_window = LoginWindow()
+#         self.login_window.show()
+#
+# # Запуск приложения
+# if __name__ == "__main__":
+#     app = QApplication(sys.argv)
+#     main_window = MainWindow()
+#     main_window.show()
+#     sys.exit(app.exec())
 
 
 # import sys

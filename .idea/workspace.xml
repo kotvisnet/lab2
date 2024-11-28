@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e79eefc7-6da6-40d1-9457-1f846dbc4108" name="Changes" comment="first window">
-      <change afterPath="$PROJECT_DIR$/LoginWindow.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/style.py" afterDir="false" />
+    <list default="true" id="e79eefc7-6da6-40d1-9457-1f846dbc4108" name="Changes" comment="adding a login class">
+      <change afterPath="$PROJECT_DIR$/UserData.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/LoginWindow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/variant.py" beforeDir="false" afterPath="$PROJECT_DIR$/variant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.py" beforeDir="false" afterPath="$PROJECT_DIR$/style.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +88,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732726900280</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="adding a login class">
+      <option name="closed" value="true" />
+      <created>1732750544099</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1732750544099</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -105,6 +113,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first option" />
     <MESSAGE value="first window" />
-    <option name="LAST_COMMIT_MESSAGE" value="first window" />
+    <MESSAGE value="adding a login class" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding a login class" />
   </component>
 </project>
